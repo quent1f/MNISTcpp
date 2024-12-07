@@ -10,8 +10,21 @@ vector<double> parseLine(string s);
 
 vector<vector<double>> dataProcess(string f);
 
-vector<double> labelProcess(string f);
+vector<int> labelProcess(string f);
 
-double testPerf(vector<vector<double>>& data, vector<double>& labels, vector<double>& prediction);
+vector<int> labelConfig(vector<int> labels); 
 
-void displayVector(vector<double>& vec);
+double testPerf(vector<vector<double>>& data, vector<int>& labels, vector<int>& prediction);
+
+#ifndef DISPLAY_VECTOR_HPP
+#define DISPLAY_VECTOR_HPP
+
+template<typename T> 
+void displayVector(vector<T>& vec) {
+    for (T elem : vec) { 
+        cout << elem << " ";    
+    }
+    cout << "\n";               
+}
+
+#endif // DISPLAY_VECTOR_HPP

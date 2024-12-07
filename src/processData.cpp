@@ -27,19 +27,29 @@ vector<vector<double>> dataProcess(string f) {
     return data;
 }
 
-vector<double> labelProcess(string f) {
+vector<int> labelProcess(string f) {
     std::ifstream file(f); 
     string line; 
-    vector<double> labels;
+    vector<int> labels;
     while(std::getline(file, line)) {
         int x = std::stoi(line);
-        // 0 if it's an even number and 1 if it's an odd number
-        x%2 == 0 ? labels.push_back(0) : labels.push_back(1);
+        labels.push_back(x); 
     }
     return labels;
 }
 
-double testPerf(vector<vector<double>>& data, vector<double>& labels, vector<int>& prediction) {
+vector<int> labelConfig(vector<int> labels) {
+    vector<int> newLabels; 
+    for (size_t i = 0; i < labels.size(); i++) {
+        int x = labels[i]; 
+        // 0 if it's an even number and 1 if it's an odd number
+        x%2 == 0 ? newLabels.push_back(0) : newLabels.push_back(1);
+    }
+    return newLabels; 
+}
+
+
+double testPerf(vector<vector<double>>& data, vector<int>& labels, vector<int>& prediction) {
     double pass = 0; 
     for (size_t i = 0; i < labels.size(); i++) {
 
@@ -53,10 +63,3 @@ double testPerf(vector<vector<double>>& data, vector<double>& labels, vector<int
     return pass;
 }
 
-
-void displayVector(vector<double>& vec) {
-    for (double elem : vec) {
-        cout << elem << " "; 
-    }
-    cout << "\n"; 
-}
