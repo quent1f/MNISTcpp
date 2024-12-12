@@ -1,12 +1,9 @@
-#include "src/model.hpp"
-#include "src/processData.hpp"
-#include "src/logistic_regression.hpp"
-
+#include "logisticRegression/model.hpp"
+#include "processData.hpp"
+#include "logisticRegression/logistic_regression.hpp"
 
 
 int main() {
-
-
 
     vector<double> w(724, 0); 
     vector<vector<double>> data_train = dataProcess("data/x_train.csv");
@@ -23,14 +20,6 @@ int main() {
     testPerf(data_test, labels_test, pred);
 
 
-
-
-
-
-
-
-
-
-
     return 0;
 }
+
